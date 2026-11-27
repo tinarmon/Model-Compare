@@ -2,7 +2,16 @@
 
 Offline report comparing **68 self-hostable LLMs** (strict OSI licence: `MIT` or `Apache-2.0`, `≤ 350 GB` at Q4) against two DeepSeek baselines (`DeepSeek-V4.1-Flash-1017`, `DeepSeek-V4-Flash-0731`). Data snapshot: **2026-11-27**.
 
-Open `index.html` in a browser. No server, build step or internet needed.
+## Run it
+
+You must clone (or download) the repo to view it. GitHub does not render `index.html` as a web page.
+
+```bash
+git clone https://github.com/tinarmon/Model-Compare.git
+cd Model-Compare
+```
+
+Then open `index.html` in a browser (double-click it). No server, build step or internet needed.
 
 ## Using these stats
 
