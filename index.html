@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>รายงานคัดเลือกโมเดล OSI Self-Host (≤ 350 GB Q4) เทียบคู่ 1017 & 0731</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">ข้ามไปเนื้อหาหลัก</a>
+  <!-- BLUF Navy Executive Hero (Option A Command Deck) -->
+  <header class="exec-hero">
+    <div class="container">
+      <div class="hero-top">
+        <div class="brand-block">
+          <div class="brand-mark" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square">
+              <rect x="3" y="3" width="7" height="7" />
+              <rect x="14" y="3" width="7" height="7" />
+              <rect x="3" y="14" width="18" height="7" />
+            </svg>
+          </div>
+          <div>
+            <h1 class="page-title">คัดเลือกโมเดล OSI Self-Host (≤ 350 GB) เทียบ 1017 &amp; 0731</h1>
+            <p class="page-subtitle">สรุป 5 วินาทีบนสุด: แยก MoE vs Dense · ระบุ Vision (Yes/No) · เทียบ Coding Benchmark ชุดเดียวกัน</p>
+          </div>
+        </div>
+        <div class="shell-meta">
+          <div class="size-switcher" role="group" aria-label="ปรับขนาดตัวอักษร">
+            <button type="button" class="size-btn" data-text-size="sm" aria-pressed="false" title="ขนาดกะทัดรัด (14.5px)">A-</button>
+            <button type="button" class="size-btn is-active" data-text-size="md" aria-pressed="true" title="ขนาดปกติ (16px)">A</button>
+            <button type="button" class="size-btn" data-text-size="lg" aria-pressed="false" title="ขนาดใหญ่ (18px)">A+</button>
+          </div>
+          <span class="meta-badge">MIT / Apache-2.0 Only</span>
+          <span class="meta-date" id="report-date">อัปเดต 2026-11-27</span>
+        </div>
+      </div>
+
+      <!-- 3-Column 5-Second Verdict Cards -->
+      <div class="bluf-grid" id="bluf-grid" aria-label="ข้อสรุปเร่งด่วน 5 วินาที"></div>
+
+      <!-- Compact 1-Row Inventory Bar -->
+      <div class="inventory-bar" id="inventory-bar"></div>
+    </div>
+  </header>
+
+  <!-- Sticky 4-Tab Navigation + Presentation & Print -->
+  <nav class="section-nav" aria-label="แถบสลับมุมมองและโหมดนำเสนอ">
+    <div class="container nav-inner">
+      <div class="nav-links" role="tablist" aria-label="แท็บเนื้อหาหลัก">
+        <button type="button" class="nav-link is-active" role="tab" aria-selected="true" aria-controls="tab-matrix" data-tab="matrix">1. ตารางเทียบตรง</button>
+        <button type="button" class="nav-link" role="tab" aria-selected="false" aria-controls="tab-charts" data-tab="charts">2. กราฟโต้ตอบ</button>
+        <button type="button" class="nav-link" role="tab" aria-selected="false" aria-controls="tab-cards" data-tab="cards">3. การ์ด &amp; Baselines</button>
+        <button type="button" class="nav-link" role="tab" aria-selected="false" aria-controls="tab-groups" data-tab="groups">4. จัดกลุ่ม (4)</button>
+        <button type="button" class="nav-link" role="tab" aria-selected="false" aria-controls="tab-excluded" data-tab="excluded">5. คัดออก (27)</button>
+      </div>
+      <div class="nav-actions">
+        <div class="nav-baseline">
+          <label class="toggle-check nav-base-toggle" title="เปิด/ปิดการเทียบ Baseline">
+            <input type="checkbox" id="baseline-toggle" checked />
+            <span>Baseline</span>
+          </label>
+          <select id="baseline-select" class="ctrl-select nav-base-select" aria-label="เลือก Baseline เปรียบเทียบหลัก"></select>
+        </div>
+        <button type="button" class="nav-btn is-primary" id="mode-toggle-btn" aria-pressed="false">โหมดนำเสนอ</button>
+        <button type="button" class="nav-btn" id="print-btn">พิมพ์ / PDF</button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content" class="container main-content" tabindex="-1">
+    <!-- TAB 1: Decluttered Apples-to-Apples Matrix -->
+    <section id="tab-matrix" class="tab-panel is-active" role="tabpanel" aria-labelledby="matrix-heading">
+      <div class="takeaway-banner" id="matrix-takeaway"></div>
+
+      <div class="section-head">
+        <h2 id="matrix-heading">ตารางเทียบตรง (Apples-to-Apples)</h2>
+        <p class="section-desc" id="active-bench-note"></p>
+      </div>
+
+      <!-- Simplified 1-Row Primary Toolbar + Collapsible Advanced Filters -->
+      <div class="primary-toolbar" role="region" aria-label="ตัวกรองหลัก">
+        <div class="preset-group" role="group" aria-label="มุมมองลัด">
+          <button type="button" class="preset-btn is-active" data-preset="all">ทั้งหมด (68 รุ่น)</button>
+          <button type="button" class="preset-btn" data-preset="vision-under160">รับภาพได้ + ≤ 150 GB</button>
+          <button type="button" class="preset-btn" data-preset="dense-compact">เฉพาะ Dense</button>
+          <button type="button" class="preset-btn" data-preset="moe-vs-0731">เฉพาะ MoE</button>
+        </div>
+
+        <div class="toolbar-right">
+          <div class="inline-select">
+            <label for="size-cap-select" class="ctrl-label">ขนาด Q4:</label>
+            <select id="size-cap-select" class="ctrl-select" aria-label="กรองขนาดไฟล์ Q4 สูงสุด"></select>
+          </div>
+          <div class="inline-select">
+            <label for="bench-select" class="ctrl-label">ชุดทดสอบ:</label>
+            <select id="bench-select" class="ctrl-select"></select>
+          </div>
+          <button type="button" class="action-btn" id="adv-filter-btn" aria-expanded="false">ตัวกรองละเอียด ▾</button>
+        </div>
+      </div>
+
+      <div class="adv-drawer" id="adv-drawer" hidden>
+        <div class="control-row">
+          <div class="control-group control-search">
+            <label for="search-input" class="ctrl-label">ค้นหาโมเดล / ค่าย</label>
+            <input id="search-input" type="search" class="ctrl-input" placeholder="เช่น Qwen3.8, Step, MiMo, Inkling..." />
+          </div>
+
+          <div class="control-group">
+            <span class="ctrl-label">สถาปัตยกรรม</span>
+            <div class="seg-group" role="group" aria-label="กรองสถาปัตยกรรม">
+              <button type="button" class="seg-btn is-active" data-arch="all">ทั้งหมด</button>
+              <button type="button" class="seg-btn" data-arch="MoE">MoE (40)</button>
+              <button type="button" class="seg-btn" data-arch="Dense">Dense (28)</button>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <span class="ctrl-label">ใส่ภาพ (Vision)</span>
+            <div class="seg-group" role="group" aria-label="กรองความสามารถรับภาพ">
+              <button type="button" class="seg-btn is-active" data-vision="all">ทั้งหมด</button>
+              <button type="button" class="seg-btn" data-vision="yes">Yes</button>
+              <button type="button" class="seg-btn" data-vision="no">No</button>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <span class="ctrl-label">Context Window</span>
+            <div class="seg-group" role="group" aria-label="กรองขนาด Context Window">
+              <button type="button" class="seg-btn is-active" data-context="all">ทั้งหมด</button>
+              <button type="button" class="seg-btn" data-context="128k">≥ 128K</button>
+              <button type="button" class="seg-btn" data-context="256k">≥ 256K</button>
+              <button type="button" class="seg-btn" data-context="1m">1M</button>
+            </div>
+          </div>
+
+          <label class="toggle-check">
+            <input type="checkbox" id="apples-only-toggle" />
+            <span>ซ่อนรุ่นที่ไม่มีคะแนนชุดนี้</span>
+          </label>
+
+          <button type="button" class="action-btn" id="reset-filters-btn">รีเซ็ตตัวกรอง</button>
+        </div>
+      </div>
+
+      <div class="table-toolbar">
+        <div class="table-footnote-text" id="table-status" role="status" aria-live="polite"></div>
+        <button type="button" class="action-btn" id="expand-all-btn">ขยายดูครบ 7 ชุดทดสอบทุกแถว ▾</button>
+      </div>
+
+      <!-- Sort-Synced Top Models Chart -->
+      <article class="plate matrix-top-plate" id="matrix-top-plate">
+        <div class="chart-head matrix-top-head">
+          <div>
+            <h3 id="matrix-top-title">กราฟ Top 8 ตามการเรียงปัจจุบัน</h3>
+            <span class="chart-sub" id="matrix-top-sub">อัปเดตอัตโนมัติตามตัวกรองและคอลัมน์ที่คลิกเรียงในตาราง · คลิกแท่งเพื่อเปิดดูครบ 7 ชุด</span>
+          </div>
+          <div class="matrix-top-actions">
+            <div class="chart-legend" aria-hidden="true">
+              <span class="leg-item"><span class="swatch sw-moe"></span>MoE</span>
+              <span class="leg-item"><span class="swatch sw-dense"></span>Dense</span>
+            </div>
+            <select id="matrix-top-n" class="ctrl-select matrix-top-select" aria-label="จำนวนรุ่นที่แสดงในกราฟ Top">
+              <option value="5">Top 5</option>
+              <option value="8" selected>Top 8</option>
+              <option value="12">Top 12</option>
+              <option value="20">Top 20</option>
+            </select>
+            <button type="button" class="action-btn" id="matrix-top-toggle" aria-expanded="true">ซ่อนกราฟ ▴</button>
+          </div>
+        </div>
+        <div class="svg-host" id="matrix-top-chart"></div>
+      </article>
+
+      <!-- Padded .table-wrap fixes detector cramped-padding -->
+      <div class="table-wrap">
+        <table class="matrix-table" id="matrix-table">
+          <thead>
+            <tr>
+              <th scope="col" class="col-model" aria-sort="none"><button type="button" class="th-sort-btn" data-sort-col="name"><span>โมเดล / License</span><span class="sort-ind" aria-hidden="true">⇅</span></button></th>
+              <th scope="col" class="col-arch" aria-sort="none"><button type="button" class="th-sort-btn" data-sort-col="arch"><span>สถาปัตยกรรม</span><span class="sort-ind" aria-hidden="true">⇅</span></button></th>
+              <th scope="col" class="col-size" aria-sort="none"><button type="button" class="th-sort-btn" data-sort-col="q4DiskGb"><span>ขนาด Q4</span><span class="sort-ind" aria-hidden="true">⇅</span></button></th>
+              <th scope="col" class="col-vision" aria-sort="none"><button type="button" class="th-sort-btn" data-sort-col="vision"><span>ใส่ภาพ (Vision)</span><span class="sort-ind" aria-hidden="true">⇅</span></button></th>
+              <th scope="col" class="col-context" aria-sort="none"><button type="button" class="th-sort-btn" data-sort-col="contextK"><span>Context</span><span class="sort-ind" aria-hidden="true">⇅</span></button></th>
+              <th scope="col" class="col-active-score" aria-sort="descending"><button type="button" class="th-sort-btn is-sorted" data-sort-col="score"><span id="active-score-head">SWE-bench Pro</span><span class="sort-ind" aria-hidden="true">▾</span></button></th>
+              <th scope="col" class="col-delta" aria-sort="none"><button type="button" class="th-sort-btn" data-sort-col="delta"><span id="delta-col-head">ต่างจาก 0731</span><span class="sort-ind" aria-hidden="true">⇅</span></button></th>
+              <th scope="col" class="col-action">คะแนนครบ 7 ชุด</th>
+            </tr>
+          </thead>
+          <tbody id="matrix-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 2: Interactive Excel / Power BI Chart Builder -->
+    <section id="tab-charts" class="tab-panel" role="tabpanel" aria-labelledby="charts-heading">
+      <div class="takeaway-banner" id="charts-takeaway">
+        <div><strong>Power BI / Excel Mode:</strong> เลือกโมเดล, เลือกชุดทดสอบบนแกน X/Y และสลับวิธีเรียงได้สดๆ — <strong>ชี้เมาส์</strong> ดูแหล่งอ้างอิง และ <strong>คลิกที่โมเดลบนกราฟใดก็ได้</strong> เพื่อ Cross-Highlight ทุกกราฟพร้อมกัน (สีล็อกตายตัว: <strong>MoE = Teal</strong>, <strong>Dense = Amber</strong>, <strong>0731 = Navy</strong>, <strong>1017 = Rust</strong>)</div>
+        <button type="button" class="action-btn" id="clear-highlight-btn" hidden>ล้าง Highlight</button>
+      </div>
+
+      <div class="section-head">
+        <h2 id="charts-heading">กราฟโต้ตอบแบบ Excel / Power BI (Line · Bar · Dot)</h2>
+      </div>
+
+      <!-- Slicer & Axis Builder Panel -->
+      <div class="slicer-panel" role="region" aria-label="แผงปรับแต่งกราฟแบบโต้ตอบ">
+        <div class="slicer-top-row">
+          <div class="seg-group" role="group" aria-label="เลือกรูปแบบกราฟ">
+            <button type="button" class="seg-btn is-active" data-chart-view="all">ทั้ง 3 กราฟ</button>
+            <button type="button" class="seg-btn" data-chart-view="line">กราฟเส้น (Line)</button>
+            <button type="button" class="seg-btn" data-chart-view="bar">กราฟแท่ง (Bar)</button>
+            <button type="button" class="seg-btn" data-chart-view="dot">กราฟจุด (Dot)</button>
+          </div>
+
+          <div class="slicer-quick">
+            <span class="ctrl-label">เลือกชุดโมเดลเร็ว:</span>
+            <button type="button" class="preset-btn is-active" data-slicer="top6">Top 5 แนะนำ + Baselines</button>
+            <button type="button" class="preset-btn" data-slicer="vision160">Vision &lt; 160G</button>
+            <button type="button" class="preset-btn" data-slicer="dense">เฉพาะ Dense</button>
+            <button type="button" class="preset-btn" data-slicer="moe">MoE ≥ 114G</button>
+            <button type="button" class="preset-btn" data-slicer="all-scored">ทั้งหมดที่มีคะแนน</button>
+            <button type="button" class="preset-btn" data-slicer="clear">ล้างทั้งหมด</button>
+          </div>
+        </div>
+
+        <!-- Model Multi-Select Slicer Chips -->
+        <div class="slicer-group">
+          <div class="slicer-head">
+            <span class="ctrl-label">เลือกโมเดลที่แสดงบนกราฟ (<span id="slicer-count">0</span> รุ่น):</span>
+            <button type="button" class="action-btn" id="slicer-toggle-more">ดูรายชื่อครบทั้ง 70 รุ่น ▾</button>
+          </div>
+          <div class="model-chips" id="model-slicer-chips"></div>
+        </div>
+
+        <!-- Dynamic Axis & Sort Controls -->
+        <div class="axis-controls">
+          <div class="axis-box">
+            <span class="ctrl-label">แกน X กราฟเส้น (เลือก 2–6 ชุดทดสอบ):</span>
+            <div class="axis-checks" id="line-axis-checks"></div>
+          </div>
+
+          <div class="axis-box">
+            <span class="ctrl-label">กราฟแท่ง (Bar) — เมตริก &amp; การเรียง:</span>
+            <div class="axis-inline">
+              <select id="bar-metric-select" class="ctrl-select"></select>
+              <select id="bar-sort-select" class="ctrl-select">
+                <option value="desc">เรียงคะแนนมาก → น้อย</option>
+                <option value="asc">เรียงคะแนนน้อย → มาก</option>
+                <option value="size">เรียงขนาด Q4 เล็ก → ใหญ่</option>
+              </select>
+              <label class="toggle-check"><input type="checkbox" id="ref-0731-chk" checked /><span id="ref-primary-label">เส้น Baseline (0731)</span></label>
+              <label class="toggle-check"><input type="checkbox" id="ref-1017-chk" checked /><span>เส้น 1017</span></label>
+            </div>
+          </div>
+
+          <div class="axis-box">
+            <span class="ctrl-label">กราฟจุด (Dot) — แกน X และ แกน Y:</span>
+            <div class="axis-inline">
+              <select id="dot-x-select" class="ctrl-select">
+                <option value="q4DiskGb">แกน X: ขนาดไฟล์ Q4 (GB)</option>
+                <option value="contextK">แกน X: Context Window (Tokens)</option>
+                <option value="activeParamsB">แกน X: Active Params (B)</option>
+              </select>
+              <select id="dot-y-select" class="ctrl-select"></select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Chart Cards -->
+      <div class="charts-grid">
+        <article class="plate chart-card is-full" id="line-chart-card">
+          <div class="chart-head">
+            <h3 id="line-title">กราฟเส้น (Line Graph): โปรไฟล์คะแนนข้ามชุดทดสอบ (ไม่ลากเส้นข้ามชุดที่ไม่มีผลวัด)</h3>
+            <div class="line-legend" id="line-legend"></div>
+          </div>
+          <div class="svg-host" id="line-chart"></div>
+        </article>
+
+        <article class="plate chart-card" id="bar-chart-card">
+          <div class="chart-head">
+            <h3 id="bar-title">กราฟแท่ง (Bar Chart): จัดอันดับ</h3>
+            <span class="chart-sub" id="bar-subtitle">คลิกที่แท่งเพื่อ Cross-Highlight</span>
+          </div>
+          <div class="svg-host" id="bar-chart"></div>
+        </article>
+
+        <article class="plate chart-card" id="dot-chart-card">
+          <div class="chart-head">
+            <h3 id="scatter-title">กราฟจุด (Dot Graph): เทียบขนาด vs คะแนน</h3>
+            <div class="chart-legend">
+              <span class="leg-item"><span class="swatch sw-moe"></span>MoE</span>
+              <span class="leg-item"><span class="swatch sw-dense"></span>Dense</span>
+              <span class="leg-item"><span class="swatch sw-base"></span>Baseline</span>
+              <span class="leg-item"><span class="marker-demo filled"></span>Vision: Yes</span>
+              <span class="leg-item"><span class="marker-demo hollow"></span>Vision: No</span>
+            </div>
+          </div>
+          <div class="svg-host" id="scatter-chart"></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- TAB 3: Scannable Decision Cards (Option B) + Dual Baselines + Glossary -->
+    <section id="tab-cards" class="tab-panel" role="tabpanel" aria-labelledby="cards-heading">
+      <div class="takeaway-banner" id="cards-takeaway">
+        <div><strong>วิธีสแกนหน้านี้ใน 30 วินาที:</strong> เส้นขีดสีดำบนหลอดคะแนนคือระดับของ <strong>Baseline 0731</strong> · ด้านล่างสุดมีคำอธิบายว่าทำไมคะแนน TB 4.0 ถึงต่ำกว่า LiveCodeBench</div>
+      </div>
+
+      <div class="section-head">
+        <h2 id="cards-heading">การ์ดเทียบโมเดลเด่นแยกตามกลุ่ม (พร้อมประโยคพูดพรีเซนต์)</h2>
+      </div>
+      <div class="cards-filter-bar">
+        <div class="seg-group" role="group" aria-label="กรองการ์ดโมเดล">
+          <button type="button" class="seg-btn is-active" data-card-filter="all">ทั้งหมด (11 การ์ดเด่น)</button>
+          <button type="button" class="seg-btn" data-card-filter="vision">ใส่ภาพได้ (Vision: Yes)</button>
+          <button type="button" class="seg-btn" data-card-filter="Dense">เฉพาะ Dense</button>
+          <button type="button" class="seg-btn" data-card-filter="MoE">เฉพาะ MoE</button>
+        </div>
+      </div>
+      <div class="scannable-grid" id="scannable-cards-grid"></div>
+
+      <div class="section-head section-gap">
+        <h2>คู่เปรียบเทียบตั้งต้น (Dual Baselines: 1017 และ 0731)</h2>
+      </div>
+      <div class="baseline-grid" id="baseline-grid"></div>
+
+      <div class="section-head section-gap">
+        <h2>คำอธิบายชุดทดสอบ (Glossary: ทำไมคะแนนต่างระดับกัน)</h2>
+      </div>
+      <div class="glossary-grid" id="glossary-grid"></div>
+    </section>
+
+    <!-- TAB 4: Model Groups (A / B / C / D) -->
+    <section id="tab-groups" class="tab-panel" role="tabpanel" aria-labelledby="groups-heading">
+      <div class="takeaway-banner" id="groups-takeaway"></div>
+      <div class="section-head">
+        <h2 id="groups-heading">จัดกลุ่มโมเดล OSI ทั้งหมดตามบทบาทการใช้งาน (Groups A–D)</h2>
+        <p class="section-desc">จัดหมวดหมู่แบบไม่ซ้ำซ้อนครบทั้ง 68 รุ่น จากเกณฑ์คะแนน Coding, ความสามารถรับภาพ (Vision) และขนาดไฟล์ Q4 — คลิก <strong>เทียบกลุ่มนี้ในกราฟ</strong> เพื่อส่งไปดูบน Power BI Charts ทันที</p>
+      </div>
+      <div class="cards-filter-bar">
+        <div class="seg-group" role="group" aria-label="กรองกลุ่มโมเดล" id="groups-filter-bar">
+          <button type="button" class="seg-btn is-active" data-group-filter="all" aria-pressed="true">ทั้งหมด (4 กลุ่ม)</button>
+          <button type="button" class="seg-btn" data-group-filter="A" aria-pressed="false">Group A · Frontier</button>
+          <button type="button" class="seg-btn" data-group-filter="B" aria-pressed="false">Group B · Mainstream</button>
+          <button type="button" class="seg-btn" data-group-filter="C" aria-pressed="false">Group C · Vision VLMs</button>
+          <button type="button" class="seg-btn" data-group-filter="D" aria-pressed="false">Group D · Compact ≤10G</button>
+        </div>
+      </div>
+      <div class="groups-stack" id="groups-body"></div>
+    </section>
+
+    <!-- TAB 5: Excluded Models Audit -->
+    <section id="tab-excluded" class="tab-panel" role="tabpanel" aria-labelledby="excluded-heading">
+      <div class="takeaway-banner" id="excluded-takeaway"></div>
+      <div class="section-head">
+        <h2 id="excluded-heading">บันทึกโมเดลที่คัดออกจากตารางหลัก (27 รุ่น)</h2>
+      </div>
+      <div class="audit-body" id="excluded-body"></div>
+    </section>
+  </main>
+
+  <!-- Floating Tooltip for Interactive Charts -->
+  <div id="chart-tooltip" class="chart-tooltip" role="tooltip" hidden></div>
+
+  <!-- Presentation Mode Footer Controls -->
+  <div class="present-bar" id="present-bar" role="region" aria-label="ควบคุมการนำเสนอ" hidden>
+    <div class="present-inner">
+      <button type="button" class="present-btn" id="slide-prev-btn">← ก่อนหน้า</button>
+      <div class="present-status" id="slide-status-text">สไลด์ 1 / 5</div>
+      <div class="present-right">
+        <button type="button" class="present-btn" id="slide-next-btn">ถัดไป →</button>
+        <button type="button" class="present-btn is-exit" id="slide-exit-btn">ออกจากการนำเสนอ (Esc)</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
